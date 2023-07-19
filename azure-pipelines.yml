@@ -13,17 +13,13 @@ trigger:
 
 jobs:
 - job: LinuxBuild
-  strategy:
-    matrix:
-      py36:
-        pyVer: '3.8'
   displayName: Linux Build
   pool:
     vmImage: 'ubuntu-20.04'
   steps:
     - task: UsePythonVersion@0
       inputs:
-        versionSpec: '$(pyVer)'
+        versionSpec: '$3.8'
         architecture: 'arm64'
     - script: sudo apt-get update -y
     - script: sudo apt-get install -y libxtst-dev qtdeclarative5-dev libavahi-compat-libdnssd-dev libcurl4-openssl-dev
