@@ -10,6 +10,15 @@ trigger:
   branches:
     include:
     - '*'
+
+parameters:
+- name: arch
+  type: string
+  values:
+  - arm64
+  - x64
+
+
 jobs:
 - job: LinuxBuild
   strategy:
