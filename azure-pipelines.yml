@@ -11,22 +11,12 @@ trigger:
     include:
     - '*'
 
-parameters:
-- name: arch
-  type: string
-  values:
-  - arm64
-  - x64
-
-
 jobs:
 - job: LinuxBuild
   strategy:
     matrix:
       ubuntu-20.04:
         imageName: 'ubuntu-20.04'
-      ubuntu-20.04-arm64:
-        imageName: 'Ubuntu_2004_ARM64'
       py36:
         pyVer: '3.8'
       py39:
