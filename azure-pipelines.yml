@@ -17,22 +17,28 @@ jobs:
     matrix:
       ubuntu-20.04:
         imageName: 'ubuntu-20.04'
-      py36:
-        pyVer: '3.8'
-      py39:
-        pyVer: '3.9'
-      py310:
-        pyVer: '3.10'
-      py311:
-        pyVer: '3.11'
-      amd64:
-        arch: 'x64'
-      aarch64:
-        arch: 'arm64'
+        amd64:
+          arch: 'x64'
+        aarch64:
+          arch: 'arm64'  
+          py36:
+            pyVer: '3.8'
+          py39:
+            pyVer: '3.9'
+          py310:
+            pyVer: '3.10'
+          py311:
+            pyVer: '3.11'
+
   displayName: Linux Build
   pool:
     vmImage: $(imageName)
   steps:
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: '$(python.version)'
+        plantform: $(arch)
+        
     - script: sudo apt-get update -y
     - script: sudo apt-get install -y libxtst-dev qtdeclarative5-dev libavahi-compat-libdnssd-dev libcurl4-openssl-dev
       displayName: Install Dependencies
