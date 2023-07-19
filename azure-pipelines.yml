@@ -15,13 +15,11 @@ jobs:
 - job: LinuxBuild
   strategy:
     matrix:
-      ubuntu-20.04:
-        imageName: 'ubuntu-20.04'
       py36:
         pyVer: '3.8'
   displayName: Linux Build
   pool:
-    vmImage: $(imageName)
+    vmImage: 'ubuntu-20.04'
   steps:
     - task: UsePythonVersion@0
       inputs:
