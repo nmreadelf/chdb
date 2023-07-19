@@ -38,4 +38,3 @@ jobs:
       displayName: Install Dependencies
     - script: sh -x ./clean_build.sh
       displayName: Clean Build
-
